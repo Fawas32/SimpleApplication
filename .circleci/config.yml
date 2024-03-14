@@ -39,9 +39,10 @@ jobs:
             - ~/.npm
 
   deploy:
-    docker:
-      - image: circleci/node:10.16.3
-    steps:
-      - run:
-          name: deploy-application
-          command: ssh -o StrictHostKeyChecking=no $EC2_x20460516@$EC2_PUBLIC_DNS "rm -rf SimpleApplication/; git clone https://github.com/Fawas32/SimpleApplication; source SimpleApplication/deploy.sh"
+  docker:
+    - image: circleci/node:10.16.3
+  steps:
+    - run:
+        name: deploy-application
+        command: |
+          ssh -o StrictHostKeyChecking=no $EC2_x20460516@$EC2_PUBLIC_DNS "rm -rf SimpleApplication/; git clone https://github.com/Fawas32/SimpleApplication; cd SimpleApplication && ls -la && source deploy.sh"
