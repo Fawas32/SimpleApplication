@@ -8,5 +8,5 @@ pm2 stop SimpleApplication
 cd SimpleApplication/
 # Install application dependencies
 npm install
-# Start the application with the process name example_app using pm2
+# Start the application with the process name example_app using pm2 .
 pm2 start ./bin/www --name SimpleApplication
