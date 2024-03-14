@@ -36,7 +36,7 @@ jobs:
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
-            - node_modules/
+            - ~/.npm
 
   deploy:
     docker:
@@ -44,4 +44,4 @@ jobs:
     steps:
       - run:
           name: deploy-application
-          command: ssh -o StrictHostKeyChecking=no $EC2_x20460516@$EC2_PUBLIC_DNS "rm -rf SimpleApplication/; git clone https://github.com/Fawas32/SimpleApplication; cd SimpleApplication && source deploy.sh"
+          command: ssh -o StrictHostKeyChecking=no $EC2_x20460516@$EC2_PUBLIC_DNS "rm -rf SimpleApplication/; git clone https://github.com/Fawas32/SimpleApplication; source SimpleApplication/deploy.sh"
